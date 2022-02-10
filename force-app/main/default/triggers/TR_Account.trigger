@@ -3,7 +3,7 @@
  */
 
 trigger TR_Account on Account (before insert, before update, after insert, after update) {
-    if(Trigger.isUpdate && Trigger.isAfter){
+    if(Trigger.isAfter && Trigger.isUpdate){
         TRH_AccountHandler.afterUpdateHandler(Trigger.new, Trigger.oldMap);
     }
 }

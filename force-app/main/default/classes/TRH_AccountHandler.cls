@@ -4,12 +4,13 @@
 
 public with sharing class TRH_AccountHandler {
 
-    public static void afterUpdateHandler(List<Account>accsList,Map<Id, Account> oldMap){
+    public static void afterUpdateHandler(List<Account>accsList, Map<Id, Account> oldMap){
         List<Case> cases = new List<Case>();
         for(Account acc : accsList){
             Account oldAcc= oldMap.get(acc.Id);
             if(acc.Rating != oldAcc.Rating){
-                DMN_Cases.singleCaseCreator(acc);
+                Case c = DMN_Cases.singleCaseCreator(acc);
+                cases.add(c);
             }
         }
         insert cases;
