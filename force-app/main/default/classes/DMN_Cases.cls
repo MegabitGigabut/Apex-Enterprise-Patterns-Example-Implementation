@@ -17,4 +17,13 @@ public with sharing class DMN_Cases {
         }
         return dmnCaseList;
     }
+
+    public static Case singleCaseCreator(Account acc){
+        Case newCase = new Case(
+                Status='String',
+                Origin='Phone',
+                AccountId=acc.Id
+        );
+        return newCase;
+    }
 }

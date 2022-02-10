@@ -5,13 +5,13 @@
 public with sharing class TRH_AccountHandler {
 
     public static void afterUpdateHandler(List<Account>accsList,Map<Id, Account> oldMap){
-
+        List<Case> cases = new List<Case>();
         for(Account acc : accsList){
             Account oldAcc= oldMap.get(acc.Id);
             if(acc.Rating != oldAcc.Rating){
-                //DMN_Cases.caseCreator();
+                DMN_Cases.singleCaseCreator(acc);
             }
         }
-
+        insert cases;
     }
 }
