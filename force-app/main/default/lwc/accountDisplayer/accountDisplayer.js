@@ -3,7 +3,7 @@
  */
 
 import { LightningElement,wire,api } from 'lwc';
-import getAllAccounts from '@salesforce/apex/CTL_Accounts.getAllAccounts';
+import getAllAccounts from '@salesforce/apex/CTRL_Accounts.getAllAccounts';
 import INDUSTRY from '@salesforce/schema/Account.Industry';
 const columns = [
     {label:'Industry', fieldName:'Industry', type:'text'}

@@ -2,8 +2,8 @@
  * Created by knura on 2/10/2022.
  */
 
-public with sharing class DMN_Accounts {
-    public static List<Account> industryChanger(List<Account> accList){
+public with sharing class SRV_Accounts {
+    public static List<Account> industryTypeChecker(List<Account> accList){
         List<Account> accountsList = new List<Account>();
         for(Account acc : accList){
             if(String.isBlank(acc.Industry) && acc.Industry == 'Energy'){

@@ -3,12 +3,18 @@
  */
 
 public with sharing class DMN_Cases {
-    public static Case caseCreator(Id AccountId){
-        Case cs = new Case(
-                Status='String',
-                Origin='Phone',
-                AccountId=AccountId
-        );
-        return cs;
+    public static Case[] caseCreator(List<Account> accsList){
+        List<Case> dmnCaseList = new List<Case>();
+        for(Account acc : accsList){
+            if(!String.isEmpty(acc.Rating) && acc.Rating == 'Warn'){
+                Case cs = new Case(
+                        Status='String',
+                        Origin='Phone',
+                        AccountId=acc.Id
+                );
+                dmnCaseList.add(cs);
+            }
+        }
+        return dmnCaseList;
     }
 }

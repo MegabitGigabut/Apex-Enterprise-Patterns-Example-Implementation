@@ -4,14 +4,14 @@
 
 public with sharing class TRH_AccountHandler {
 
-    public static void afterUpdateHandler(List<Account>accsList){
-        List<Account> dmnList = DMN_Accounts.industryChanger(accsList);
-        List<Case> dmnCaseList = new List<Case>();
-        for(Account acc : dmnList){
-            if(!String.isEmpty(acc.Rating) && acc.Rating == 'Warn'){
-                dmnCaseList.add(DMN_Cases.caseCreator(acc.Id));
+    public static void afterUpdateHandler(List<Account>accsList,Map<Id, Account> oldMap){
+
+        for(Account acc : accsList){
+            Account oldAcc= oldMap.get(acc.Id);
+            if(acc.Rating != oldAcc.Rating){
+                //DMN_Cases.caseCreator();
             }
         }
-        insert dmnCaseList;
+
     }
 }
